@@ -1,0 +1,3 @@
+ git repo: https://github.com/filipljoljic/filipljoljic-final-midterm2
+
+ heroku deploy: https://final-midterm2-2fd88a6a65f2.herokuapp.com/
