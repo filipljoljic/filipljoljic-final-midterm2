@@ -25,6 +25,7 @@ Flight::route('POST /midterm/investor', function(){
     * This endpoint should return output in JSON format
     * Sample output is given in figure 2 (message should be updated according to the result)
     */
+    Flight::json(Flight::midtermService()->investor());
 });
 
 
@@ -39,6 +40,8 @@ Flight::route('GET /midterm/investor_email/@email', function($email){
     * Output example is given in figure 2 (message should be updated according to the result)
     * This endpoint should return output in JSON format
     */
+    Flight::json(Flight::midtermService()->investor_email($email));
+    
 });
 
 Flight::route("GET /midterm/investor/@share_class_id", function($share_class_id){

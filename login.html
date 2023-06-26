@@ -45,10 +45,41 @@
     /*TODO #1 Add code to check whether user is logged in or not.
      * If user is already logged in (token exists) redirect to index.html
      */
-
+    var token = localStorage.getItem("token");
+    if (token) {
+      var user = Utils.parseJwt(token);
+      window.location.replace("index.html");
+    }
     /* TODO #2
      * If user is not logged in (token does not exists or is not valid) implement AJAX call to rest/final/login
      * when login button is clicked
      */
+     $('#login-form').validate({
+            submitHandler: function (form) {
+                var user = Object.fromEntries((new FormData(form)).entries());
+                login(user);
+            }
+        });
+
+    function login(user) {
+        $.ajax({
+            type: "GET",
+            url: ' rest/final/login',
+            data: {
+              email: user.email,
+              password: user.password
+            },
+            dataType: "json",
+
+            success: function (data) {
+                localStorage.setItem("token", data.token);
+                window.location.replace("index.html");
+
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                toastr.error(XMLHttpRequest.responseJSON.message);
+            }
+        });
+    }
   </script>
 </html>

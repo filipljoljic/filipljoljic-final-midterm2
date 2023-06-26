@@ -7,6 +7,7 @@ Flight::route('GET /final/connection-check', function(){
     * Goal is to check whether connection is successfully established or not
     * This endpoint does not have to return output in JSON format
     */
+    Flight::finalService();
 });
 
 Flight::route('GET /final/login', function(){
@@ -17,6 +18,7 @@ Flight::route('GET /final/login', function(){
     * Sample output is given in figure 7
     * This endpoint should return output in JSON format
     */
+
 });
 
 Flight::route('POST /final/investor', function(){
